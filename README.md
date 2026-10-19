@@ -1,8 +1,12 @@
 <div align="center">
 
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:0F2027,50:203A43,100:2C5364&height=180&section=header&text=Clark&fontSize=52&fontColor=ffffff&fontAlignY=36&desc=SOFTWARE%20DEVELOPER%20·%20WEB%20·%20MOBILE%20·%20MACOS&descAlignY=58&descSize=15&animation=fadeIn"/>
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:0F2027,50:203A43,100:2C5364&height=220&section=header&text=Clark&fontSize=72&fontColor=ffffff&fontAlignY=36&animation=twinkling&desc=SOFTWARE%20DEVELOPER%20·%20WEB%20·%20MOBILE%20·%20MACOS&descSize=16&descAlignY=58"/>
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=17&pause=1200&color=58A6FF&center=true&vCenter=true&width=640&lines=I+build+the+systems+that+schools+and+offices+run+on.;Web+%C2%B7+Mobile+%C2%B7+macOS;Most+of+my+work+lives+in+private+repositories." alt="Typing SVG"/>
+<a href="https://github.com/debugged-me">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=18&duration=3000&pause=1000&color=58A6FF&center=true&vCenter=true&width=640&lines=I+build+the+systems+that+schools+and+offices+run+on.;PHP+%C2%B7+CodeIgniter+%C2%B7+Laravel+%C2%B7+MySQL;Flutter+for+Android+%26+iOS+%C2%B7+Swift+for+macOS;Most+of+my+work+lives+in+private+repositories." alt="Typing SVG"/>
+</a>
+
+<img src="https://komarev.com/ghpvc/?username=debugged-me&style=flat-square&color=2C5364&label=PROFILE+VIEWS" alt="Profile views"/>
 
 </div>
 
@@ -50,17 +54,17 @@ Software developer at **Softtech Solution and Services Co.** in Mati City, Phili
 
 <div align="center">
 
-<img height="160" src="https://github-readme-stats.vercel.app/api?username=debugged-me&show_icons=true&theme=transparent&hide_border=true&rank_icon=github&include_all_commits=true"/>
-<img height="160" src="https://streak-stats.demolab.com?user=debugged-me&theme=transparent&hide_border=true"/>
+<img height="170" src="https://github-readme-stats.vercel.app/api?username=debugged-me&custom_title=Clark%27s%20GitHub%20Stats&show_icons=true&include_all_commits=true&rank_icon=github&hide_border=true&border_radius=10&bg_color=30,0F2027,203A43,2C5364&title_color=58A6FF&icon_color=58A6FF&text_color=E6EDF3&ring_color=58A6FF" alt="GitHub stats"/>
+<img height="170" src="https://streak-stats.demolab.com?user=debugged-me&hide_border=true&border_radius=10&background=30,0F2027,203A43,2C5364&ring=58A6FF&fire=58A6FF&currStreakLabel=58A6FF&sideLabels=E6EDF3&currStreakNum=FFFFFF&sideNums=FFFFFF&dates=8B949E&stroke=2C5364" alt="GitHub streak"/>
+
+<br/><br/>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/debugged-me/debugged-me/output/snake-dark.svg"/>
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/debugged-me/debugged-me/output/snake-light.svg"/>
+  <img alt="Contribution snake" src="https://raw.githubusercontent.com/debugged-me/debugged-me/output/snake-dark.svg"/>
+</picture>
 
 </div>
 
----
-
-<div align="center">
-
-*Fear with progress is better than comfort with none.*
-
-</div>
-
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:0F2027,50:203A43,100:2C5364&height=100&section=footer"/>
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:2C5364,50:203A43,100:0F2027&height=150&section=footer&text=Fear%20with%20progress%20is%20better%20than%20comfort%20with%20none.&fontSize=18&fontColor=ffffff&fontAlignY=70&animation=fadeIn"/>
