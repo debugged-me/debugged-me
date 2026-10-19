@@ -6,11 +6,14 @@ import { pathToFileURL } from "node:url";
 
 const LOGIN = process.env.PROFILE_USER || "debugged-me";
 
-const INK = "#37352F";
-const GREY = "#787774";
-const FAINT = "#9B9A97";
-const LINE = "#E9E9E7";
-const SANS = "ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif";
+const INK = "#0A0A0A";
+const TEXT2 = "#525252";
+const FAINT = "#8A8A8A";
+const BORDER = "#D4D4D4";
+const BLUE = "#0A0A0A";
+const GREEN = "#0A0A0A";
+const SANS = "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif";
+const MONO = "ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace";
 
 const CALENDAR = "contributionCalendar { totalContributions weeks { contributionDays { date contributionCount } } }";
 
@@ -72,73 +75,88 @@ const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "
 const shortDate = (iso) => `${MONTHS[+iso.slice(5, 7) - 1]} ${+iso.slice(8, 10)}`;
 
 export function render(data, now = new Date()) {
-  const W = 1000, H = 350;
+  const W = 1000, H = 360;
   const allTime = Object.values(data.years).reduce((sum, y) => sum + y.total, 0);
   const { current, longest } = streaks(data.years, now.toISOString().slice(0, 10));
-  const days = (n) => (n === 1 ? " day" : " days");
+  const days = (n) => (n === 1 ? " DAY" : " DAYS");
 
   const metrics = [
-    [fmt(data.pastYear.total), "", "Contributions, past year"],
-    [fmt(allTime), "", "Contributions, all time"],
-    [fmt(current), days(current), "Current streak"],
-    [fmt(longest.length), days(longest.length), longest.length ? `Longest streak · ${shortDate(longest.start)} – ${shortDate(longest.end)}` : "Longest streak"],
+    [fmt(data.pastYear.total), "", "PAST YEAR"],
+    [fmt(allTime), "", "ALL TIME"],
+    [fmt(current), days(current), "CURRENT STREAK"],
+    [fmt(longest.length), days(longest.length), longest.length ? `LONGEST · ${shortDate(longest.start).toUpperCase()} – ${shortDate(longest.end).toUpperCase()}` : "LONGEST STREAK"],
   ];
   const col = 230;
   const metricSvg = metrics.map(([num, unit, label], i) => `
-    <g class="fade" style="animation-delay:${0.1 + i * 0.08}s">
-      ${i ? `<line x1="${40 + i * col - 20}" y1="92" x2="${40 + i * col - 20}" y2="152" stroke="${LINE}"/>` : ""}
-      <text x="${40 + i * col}" y="${i ? 106 : 106}" font-size="13" fill="${GREY}">${label}</text>
-      <text x="${40 + i * col}" y="144" font-size="32" font-weight="700" letter-spacing="-.5" fill="${INK}">${num}<tspan font-size="16" font-weight="500" letter-spacing="0" fill="${GREY}">${unit}</tspan></text>
+    <g class="in" style="animation-delay:${0.1 + i * 0.08}s">
+      ${i ? `<line x1="${40 + i * col - 20}" y1="88" x2="${40 + i * col - 20}" y2="152" stroke="${BORDER}"/>` : ""}
+      <text class="mono" x="${40 + i * col}" y="104" font-size="11" font-weight="600" letter-spacing="1.6" fill="${FAINT}">${label}</text>
+      <text x="${40 + i * col}" y="146" font-size="38" font-weight="800" letter-spacing="-1" fill="${INK}">${num}<tspan class="mono" font-size="13" font-weight="700" letter-spacing="1" fill="${BLUE}">${unit}</tspan></text>
     </g>`).join("");
 
   // Weekly totals for the last 52 weeks.
   const weeks = data.pastYear.weeks.slice(-52).map((w) => ({ start: w[0].date, total: w.reduce((s, d) => s + d.count, 0) }));
   const max = Math.max(1, ...weeks.map((w) => w.total));
   const peak = weeks.reduce((best, w, i) => (w.total > weeks[best].total ? i : best), 0);
-  const left = 40, right = 960, base = 312, tall = 92;
-  const slot = (right - left) / weeks.length, bw = Math.min(11, slot * 0.6);
+  const left = 40, right = 960, base = 318, tall = 92;
+  const slot = (right - left) / weeks.length, bw = Math.min(12, slot * 0.66);
   let lastMonth = null;
   const bars = [], labels = [];
   weeks.forEach((w, i) => {
     const x = left + i * slot + (slot - bw) / 2;
     const h = w.total ? Math.max(4, (w.total / max) * tall) : 2;
-    const fill = !w.total ? "#F1F1EF" : i === peak ? INK : "#D3D1CB";
-    bars.push(`<rect class="grow" style="animation-delay:${(0.3 + i * 0.018).toFixed(3)}s" x="${x.toFixed(1)}" y="${(base - h).toFixed(1)}" width="${bw.toFixed(1)}" height="${h.toFixed(1)}" rx="2" fill="${fill}"/>`);
+    const fill = !w.total ? "#EBEBEB" : i === peak ? INK : BLUE;
+    bars.push(`<rect class="grow" style="animation-delay:${(0.3 + i * 0.018).toFixed(3)}s" x="${x.toFixed(1)}" y="${(base - h).toFixed(1)}" width="${bw.toFixed(1)}" height="${h.toFixed(1)}" fill="${fill}"/>`);
     const month = w.start.slice(5, 7);
-    if (month !== lastMonth && i > 0 && i < weeks.length - 2) labels.push(`<text x="${(x + bw / 2).toFixed(1)}" y="${base + 20}" font-size="11.5" fill="${FAINT}" text-anchor="middle">${MONTHS[+month - 1]}</text>`);
+    if (month !== lastMonth && i > 0 && i < weeks.length - 2) labels.push(`<text class="mono" x="${(x + bw / 2).toFixed(1)}" y="${base + 20}" font-size="10.5" font-weight="600" letter-spacing="1" fill="${FAINT}" text-anchor="middle">${MONTHS[+month - 1].toUpperCase()}</text>`);
     lastMonth = month;
   });
+  const grid = [0.5, 1].map((f) => `<line x1="${left}" y1="${(base - tall * f).toFixed(1)}" x2="${right}" y2="${(base - tall * f).toFixed(1)}" stroke="#EBEBEB" stroke-dasharray="3 4"/>`).join("");
   const px = left + peak * slot + slot / 2, ph = Math.max(4, (weeks[peak].total / max) * tall);
   const anchor = px > 900 ? "end" : px < 100 ? "start" : "middle";
   const peakSvg = weeks[peak].total
-    ? `<g class="fade" style="animation-delay:1.4s"><text x="${px.toFixed(1)}" y="${(base - ph - 9).toFixed(1)}" font-size="12" font-weight="600" fill="${INK}" text-anchor="${anchor}">${fmt(weeks[peak].total)}</text></g>`
+    ? `<g class="in" style="animation-delay:1.4s"><text class="mono" x="${px.toFixed(1)}" y="${(base - ph - 9).toFixed(1)}" font-size="12" font-weight="700" fill="${INK}" text-anchor="${anchor}">${fmt(weeks[peak].total)}</text></g>`
     : "";
 
-  const updated = `${MONTHS[now.getUTCMonth()]} ${now.getUTCDate()}, ${now.getUTCFullYear()}`;
+  const updated = now.toISOString().slice(0, 10);
   const summary = `GitHub activity: ${fmt(data.pastYear.total)} contributions in the past year, ${fmt(allTime)} all time, current streak ${current} days, longest streak ${longest.length} days.`;
+  const crop = [[14, 14, 1, 1], [W - 14, 14, -1, 1], [14, H - 14, 1, -1], [W - 14, H - 14, -1, -1]].map(([x, y, sx, sy]) => `<path d="M${x} ${y + sy * 12} V${y} H${x + sx * 12}"/>`).join("");
 
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="${summary}">
   <title>${summary}</title>
   <style>
 text { font-family: ${SANS}; }
-.fade { animation: fade .8s ease-out both; }
-@keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.mono { font-family: ${MONO}; }
+.in { animation: in .7s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes in { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: none; } }
 .grow { transform-box: fill-box; transform-origin: bottom; animation: grow .9s cubic-bezier(.2,.8,.2,1) both; }
 @keyframes grow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
-.live { transform-box: fill-box; transform-origin: center; animation: live 2.4s ease-out infinite; }
-@keyframes live { 0% { opacity: .6; transform: scale(1); } 80%, 100% { opacity: 0; transform: scale(2.6); } }
+.live { transform-box: fill-box; transform-origin: center; animation: live 2s ease-out infinite; }
+@keyframes live { 0% { opacity: .6; transform: scale(1); } 80%, 100% { opacity: 0; transform: scale(2.8); } }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
   </style>
-  <rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" rx="11.5" fill="#FFFFFF" stroke="${LINE}"/>
-  <g fill="none" stroke="${INK}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M41 34 v14 h16 M45 44 l4 -4 3 3 5 -6"/></g>
-  <text x="66" y="47" font-size="16" font-weight="600" fill="${INK}">Activity</text>
-  <circle class="live" cx="${960 - 5}" cy="42.5" r="3.4" fill="#6C9B7D"/>
-  <circle cx="${960 - 5}" cy="42.5" r="3.4" fill="#6C9B7D"/>
-  <text x="${960 - 16}" y="47" font-size="12.5" fill="${FAINT}" text-anchor="end">Updated ${updated}</text>
-  <line x1="40" y1="68" x2="960" y2="68" stroke="${LINE}"/>
+  <defs>
+    <clipPath id="card"><rect width="${W}" height="${H}" rx="6"/></clipPath>
+    <pattern id="minor" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#F0F0F0"/></pattern>
+    <pattern id="major" width="120" height="120" patternUnits="userSpaceOnUse"><rect width="120" height="120" fill="url(#minor)"/><path d="M120 0H0V120" fill="none" stroke="#E5E5E5"/></pattern>
+  </defs>
+  <g clip-path="url(#card)">
+    <rect width="${W}" height="${H}" fill="#FFFFFF"/>
+    <rect width="${W}" height="${H}" fill="url(#major)" opacity=".7"/>
+  </g>
+  <rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" rx="5.5" fill="none" stroke="${BORDER}"/>
+  <g fill="none" stroke="${INK}" stroke-width="1.6">${crop}</g>
+  <rect x="40" y="35" width="10" height="10" fill="${BLUE}"/>
+  <text class="mono" x="60" y="45" font-size="13" font-weight="700" letter-spacing="2.4" fill="${INK}">ACTIVITY</text>
+  <circle class="live" cx="${960 - 5}" cy="40.5" r="3.5" fill="${GREEN}"/>
+  <circle cx="${960 - 5}" cy="40.5" r="3.5" fill="${GREEN}"/>
+  <text class="mono" x="${960 - 16}" y="45" font-size="11" font-weight="600" letter-spacing="1.2" fill="${FAINT}" text-anchor="end">UPDATED ${updated}</text>
+  <line x1="40" y1="64" x2="960" y2="64" stroke="${BORDER}"/>
   ${metricSvg}
-  <text x="40" y="200" font-size="13" fill="${GREY}">Contributions per week</text>
+  <text class="mono" x="40" y="200" font-size="11" font-weight="600" letter-spacing="1.6" fill="${FAINT}">CONTRIBUTIONS / WEEK</text>
+  ${grid}
   ${bars.join("\n  ")}
+  <line x1="${left}" y1="${base}" x2="${right}" y2="${base}" stroke="${BORDER}"/>
   ${labels.join("\n  ")}
   ${peakSvg}
 </svg>

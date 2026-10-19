@@ -1,48 +1,49 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 210" width="1000" height="210" role="img" aria-label="Fear with progress is better than comfort with none.">
   <title>Fear with progress is better than comfort with none.</title>
   <style>
-text { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; }
-.serif { font-family: 'Lyon-Text', Georgia, YuMincho, 'Times New Roman', serif; }
-.ink { fill: none; stroke: #37352F; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; animation: ink 1.1s ease-in-out both; }
-@keyframes ink { to { stroke-dashoffset: 0; } }
-.fade { animation: fade .8s ease-out both; }
-@keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-.caret { animation: blink 1.06s steps(1) infinite; }
+text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+.mono { font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace; }
+.in { animation: in .7s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes in { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: none; } }
+.caret { animation: blink 1s steps(1) infinite; }
 @keyframes blink { 50% { opacity: 0; } }
-
-.breathe { transform-box: fill-box; transform-origin: bottom center; animation: breathe 3.6s ease-in-out infinite; }
-@keyframes breathe { 0%, 100% { transform: scale(1, 1); } 50% { transform: scale(1.015, 1.045); } }
-.z { animation: z 3.6s ease-out infinite both; }
-@keyframes z { 0% { opacity: 0; transform: translate(0, 6px); } 30% { opacity: 1; } 100% { opacity: 0; transform: translate(10px, -22px); } }
-.bar { transform-box: fill-box; transform-origin: top; animation: bar .7s cubic-bezier(.2,.8,.2,1) both; }
-@keyframes bar { from { transform: scaleY(0); } to { transform: scaleY(1); } }
-@media (prefers-reduced-motion: reduce) { * { animation: none !important; } .ink { stroke-dashoffset: 0; } .cover { display: none; } }
+.scan { animation: scan 7s linear infinite; }
+@keyframes scan { from { transform: translateX(-80px); } to { transform: translateX(1080px); } }
+.live { transform-box: fill-box; transform-origin: center; animation: live 2s ease-out infinite; }
+@keyframes live { 0% { opacity: .6; transform: scale(1); } 80%, 100% { opacity: 0; transform: scale(2.8); } }
+.b0 { animation: b0 8.0s infinite; } @keyframes b0 { 0%, 6.12% { fill: #EBEBEB; } 6.25%, 92.50% { fill: #0A0A0A; } 93.75%, 100% { fill: #EBEBEB; } }.b1 { animation: b1 8.0s infinite; } @keyframes b1 { 0%, 8.88% { fill: #EBEBEB; } 9.00%, 92.50% { fill: #0A0A0A; } 93.75%, 100% { fill: #EBEBEB; } }.b2 { animation: b2 8.0s infinite; } @keyframes b2 { 0%, 11.62% { fill: #EBEBEB; } 11.75%, 92.50% { fill: #0A0A0A; } 93.75%, 100% { fill: #EBEBEB; } }.b3 { animation: b3 8.0s infinite; } @keyframes b3 { 0%, 14.38% { fill: #EBEBEB; } 14.50%, 92.50% { fill: #0A0A0A; } 93.75%, 100% { fill: #EBEBEB; } }.b4 { animation: b4 8.0s infinite; } @keyframes b4 { 0%, 17.12% { fill: #EBEBEB; } 17.25%, 92.50% { fill: #0A0A0A; } 93.75%, 100% { fill: #EBEBEB; } }.b5 { animation: b5 8.0s infinite; } @keyframes b5 { 0%, 19.88% { fill: #EBEBEB; } 20.00%, 92.50% { fill: #0A0A0A; } 93.75%, 100% { fill: #EBEBEB; } }.b6 { animation: b6 8.0s infinite; } @keyframes b6 { 0%, 22.62% { fill: #EBEBEB; } 22.75%, 92.50% { fill: #0A0A0A; } 93.75%, 100% { fill: #EBEBEB; } }.b7 { animation: b7 8.0s infinite; } @keyframes b7 { 0%, 25.38% { fill: #EBEBEB; } 25.50%, 92.50% { fill: #0A0A0A; } 93.75%, 100% { fill: #EBEBEB; } }.b8 { animation: b8 8.0s infinite; } @keyframes b8 { 0%, 28.12% { fill: #EBEBEB; } 28.25%, 92.50% { fill: #0A0A0A; } 93.75%, 100% { fill: #EBEBEB; } }.b9 { animation: b9 8.0s infinite; } @keyframes b9 { 0%, 30.88% { fill: #EBEBEB; } 31.00%, 92.50% { fill: #0A0A0A; } 93.75%, 100% { fill: #EBEBEB; } }.b10 { animation: b10 8.0s infinite; } @keyframes b10 { 0%, 33.63% { fill: #EBEBEB; } 33.75%, 92.50% { fill: #0A0A0A; } 93.75%, 100% { fill: #EBEBEB; } }.b11 { animation: b11 8.0s infinite; } @keyframes b11 { 0%, 36.38% { fill: #EBEBEB; } 36.50%, 92.50% { fill: #0A0A0A; } 93.75%, 100% { fill: #EBEBEB; } }.b12 { animation: b12 8.0s infinite; } @keyframes b12 { 0%, 39.13% { fill: #EBEBEB; } 39.25%, 92.50% { fill: #0A0A0A; } 93.75%, 100% { fill: #EBEBEB; } }.b13 { animation: b13 8.0s infinite; } @keyframes b13 { 0%, 41.88% { fill: #EBEBEB; } 42.00%, 92.50% { fill: #0A0A0A; } 93.75%, 100% { fill: #EBEBEB; } }.b14 { animation: b14 8.0s infinite; } @keyframes b14 { 0%, 44.62% { fill: #EBEBEB; } 44.75%, 92.50% { fill: #0A0A0A; } 93.75%, 100% { fill: #EBEBEB; } }.b15 { animation: b15 8.0s infinite; } @keyframes b15 { 0%, 47.38% { fill: #EBEBEB; } 47.50%, 92.50% { fill: #0A0A0A; } 93.75%, 100% { fill: #EBEBEB; } }.b16 { animation: b16 8.0s infinite; } @keyframes b16 { 0%, 50.12% { fill: #EBEBEB; } 50.25%, 92.50% { fill: #0A0A0A; } 93.75%, 100% { fill: #EBEBEB; } }.b17 { animation: b17 8.0s infinite; } @keyframes b17 { 0%, 52.88% { fill: #EBEBEB; } 53.00%, 92.50% { fill: #0A0A0A; } 93.75%, 100% { fill: #EBEBEB; } }.b18 { animation: b18 8.0s infinite; } @keyframes b18 { 0%, 55.62% { fill: #EBEBEB; } 55.75%, 92.50% { fill: #0A0A0A; } 93.75%, 100% { fill: #EBEBEB; } }.b19 { animation: b19 8.0s infinite; } @keyframes b19 { 0%, 58.38% { fill: #EBEBEB; } 58.50%, 92.50% { fill: #0A0A0A; } 93.75%, 100% { fill: #EBEBEB; } }.p0 { opacity: 1; animation: p0 8.0s infinite; } @keyframes p0 { 0%, 6.12% { opacity: 1; } 6.25%, 93.62% { opacity: 0; } 93.75%, 100% { opacity: 1; } }.p1 { opacity: 0; animation: p1 8.0s infinite; } @keyframes p1 { 0%, 6.12% { opacity: 0; } 6.25%, 8.88% { opacity: 1; } 9.00%, 100% { opacity: 0; } }.p2 { opacity: 0; animation: p2 8.0s infinite; } @keyframes p2 { 0%, 8.88% { opacity: 0; } 9.00%, 11.62% { opacity: 1; } 11.75%, 100% { opacity: 0; } }.p3 { opacity: 0; animation: p3 8.0s infinite; } @keyframes p3 { 0%, 11.62% { opacity: 0; } 11.75%, 14.38% { opacity: 1; } 14.50%, 100% { opacity: 0; } }.p4 { opacity: 0; animation: p4 8.0s infinite; } @keyframes p4 { 0%, 14.38% { opacity: 0; } 14.50%, 17.12% { opacity: 1; } 17.25%, 100% { opacity: 0; } }.p5 { opacity: 0; animation: p5 8.0s infinite; } @keyframes p5 { 0%, 17.12% { opacity: 0; } 17.25%, 19.88% { opacity: 1; } 20.00%, 100% { opacity: 0; } }.p6 { opacity: 0; animation: p6 8.0s infinite; } @keyframes p6 { 0%, 19.88% { opacity: 0; } 20.00%, 22.62% { opacity: 1; } 22.75%, 100% { opacity: 0; } }.p7 { opacity: 0; animation: p7 8.0s infinite; } @keyframes p7 { 0%, 22.62% { opacity: 0; } 22.75%, 25.38% { opacity: 1; } 25.50%, 100% { opacity: 0; } }.p8 { opacity: 0; animation: p8 8.0s infinite; } @keyframes p8 { 0%, 25.38% { opacity: 0; } 25.50%, 28.12% { opacity: 1; } 28.25%, 100% { opacity: 0; } }.p9 { opacity: 0; animation: p9 8.0s infinite; } @keyframes p9 { 0%, 28.12% { opacity: 0; } 28.25%, 30.88% { opacity: 1; } 31.00%, 100% { opacity: 0; } }.p10 { opacity: 0; animation: p10 8.0s infinite; } @keyframes p10 { 0%, 30.88% { opacity: 0; } 31.00%, 33.63% { opacity: 1; } 33.75%, 100% { opacity: 0; } }.p11 { opacity: 0; animation: p11 8.0s infinite; } @keyframes p11 { 0%, 33.63% { opacity: 0; } 33.75%, 36.38% { opacity: 1; } 36.50%, 100% { opacity: 0; } }.p12 { opacity: 0; animation: p12 8.0s infinite; } @keyframes p12 { 0%, 36.38% { opacity: 0; } 36.50%, 39.13% { opacity: 1; } 39.25%, 100% { opacity: 0; } }.p13 { opacity: 0; animation: p13 8.0s infinite; } @keyframes p13 { 0%, 39.13% { opacity: 0; } 39.25%, 41.88% { opacity: 1; } 42.00%, 100% { opacity: 0; } }.p14 { opacity: 0; animation: p14 8.0s infinite; } @keyframes p14 { 0%, 41.88% { opacity: 0; } 42.00%, 44.62% { opacity: 1; } 44.75%, 100% { opacity: 0; } }.p15 { opacity: 0; animation: p15 8.0s infinite; } @keyframes p15 { 0%, 44.62% { opacity: 0; } 44.75%, 47.38% { opacity: 1; } 47.50%, 100% { opacity: 0; } }.p16 { opacity: 0; animation: p16 8.0s infinite; } @keyframes p16 { 0%, 47.38% { opacity: 0; } 47.50%, 50.12% { opacity: 1; } 50.25%, 100% { opacity: 0; } }.p17 { opacity: 0; animation: p17 8.0s infinite; } @keyframes p17 { 0%, 50.12% { opacity: 0; } 50.25%, 52.88% { opacity: 1; } 53.00%, 100% { opacity: 0; } }.p18 { opacity: 0; animation: p18 8.0s infinite; } @keyframes p18 { 0%, 52.88% { opacity: 0; } 53.00%, 55.62% { opacity: 1; } 55.75%, 100% { opacity: 0; } }.p19 { opacity: 0; animation: p19 8.0s infinite; } @keyframes p19 { 0%, 55.62% { opacity: 0; } 55.75%, 58.38% { opacity: 1; } 58.50%, 100% { opacity: 0; } }.p20 { opacity: 0; animation: p20 8.0s infinite; } @keyframes p20 { 0%, 58.38% { opacity: 0; } 58.50%, 93.62% { opacity: 1; } 93.75%, 100% { opacity: 0; } }
+.bar { transform-box: fill-box; transform-origin: top; animation: grow .7s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes grow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; } .p0 { opacity: 0 !important; } .p20 { opacity: 1 !important; } [class^="b"] { fill: #0A0A0A; } }
   </style>
-  <rect x=".5" y=".5" width="999" height="209" rx="11.5" fill="#FFFFFF" stroke="#E9E9E7"/>
+  
+  <defs>
+    <clipPath id="card"><rect width="1000" height="210" rx="6"/></clipPath>
+    <pattern id="minor" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#F0F0F0" stroke-width="1"/></pattern>
+    <pattern id="major" width="120" height="120" patternUnits="userSpaceOnUse"><rect width="120" height="120" fill="url(#minor)"/><path d="M120 0H0V120" fill="none" stroke="#E5E5E5" stroke-width="1"/></pattern>
+    <linearGradient id="beam" x1="0" x2="1"><stop offset="0" stop-color="#0A0A0A" stop-opacity="0"/><stop offset="1" stop-color="#0A0A0A" stop-opacity=".05"/></linearGradient>
+  </defs>
+  <g clip-path="url(#card)">
+    <rect width="1000" height="210" fill="#FFFFFF"/>
+    <rect width="1000" height="210" fill="url(#major)"/>
+    <g class="scan"><rect x="0" y="0" width="80" height="210" fill="url(#beam)"/><rect x="79" y="0" width="1.5" height="210" fill="#0A0A0A" fill-opacity=".18"/></g>
+    
+  </g>
+  <rect x=".5" y=".5" width="999" height="209" rx="5.5" fill="none" stroke="#D4D4D4"/>
+  <g fill="none" stroke="#0A0A0A" stroke-width="1.6"><path d="M14 26 V14 H26"/><path d="M986 26 V14 H974"/><path d="M14 184 V196 H26"/><path d="M986 184 V196 H974"/></g>
 
-  <rect class="bar" x="56" y="80" width="3" height="44" fill="#37352F"/>
-  <g class="fade" style="animation-delay:.2s">
-    <text class="serif" x="80" y="111" font-size="25" fill="#37352F">Fear with progress is better than comfort with none.</text>
+  <rect class="bar" x="52" y="60" width="6" height="92" fill="#0A0A0A"/>
+  <g class="in" style="animation-delay:.15s">
+    <text x="80" y="98" font-size="33" font-weight="800" letter-spacing="-.6" fill="#0A0A0A">Fear with progress is better</text>
+    <text x="80" y="140" font-size="33" font-weight="800" letter-spacing="-.6" fill="#0A0A0A">than comfort with none.</text>
   </g>
 
-  <g>
-    <path class="ink" pathLength="1" style="animation-delay:0.30s;" d="M780 170 H960"/>
-    <g class="breathe">
-      <path d="M822 170 C816 142 844 120 880 118 C916 116 944 138 942 170" fill="#FFFFFF"/>
-      <path class="ink" pathLength="1" style="animation-delay:0.50s;" d="M822 170 C816 142 844 120 880 118 C916 116 944 138 942 170"/>
-      <path class="ink" pathLength="1" style="animation-delay:0.90s;" d="M940 164 C936 178 896 180 866 171"/>
-    </g>
-    <path d="M806 148 L804 128 L818 138 Z M834 136 L844 122 L846 142 Z" fill="#FFFFFF"/>
-    <path class="ink" pathLength="1" style="animation-delay:0.70s;" d="M806 148 L804 128 L818 138"/>
-    <path class="ink" pathLength="1" style="animation-delay:0.75s;" d="M834 136 L844 122 L846 142"/>
-    <path d="M802 158 C798 140 812 132 826 132 C842 132 850 144 848 158 C846 168 836 171 824 171 C812 171 803 166 802 158 Z" fill="#FFFFFF"/>
-    <path class="ink" pathLength="1" style="animation-delay:0.60s;" d="M802 158 C798 140 812 132 826 132 C842 132 850 144 848 158 C846 168 836 171 824 171 C812 171 803 166 802 158 Z"/>
-    <path class="ink" pathLength="1" style="animation-delay:1.10s;stroke-width:2" d="M811 152 q4 3.5 8 0 M829 152 q4 3.5 8 0"/>
-    <path d="M822 160 h5 l-2.5 3 Z" fill="#37352F" class="fade" style="animation-delay:1.2s"/>
-    <g fill="#787774" font-weight="600">
-      <text class="z" x="858" y="112" font-size="13">z</text>
-      <text class="z" style="animation-delay:1.2s" x="870" y="98" font-size="16">z</text>
-      <text class="z" style="animation-delay:2.4s" x="884" y="82" font-size="19">Z</text>
-    </g>
+  <g class="in" style="animation-delay:.35s">
+    <text class="mono" x="640" y="86" font-size="11.5" font-weight="600" letter-spacing="1.8" fill="#525252">PROGRESS</text>
+    <text class="mono p0" x="944" y="86" font-size="13" font-weight="700" fill="#0A0A0A" text-anchor="end">0%</text><text class="mono p1" x="944" y="86" font-size="13" font-weight="700" fill="#0A0A0A" text-anchor="end">5%</text><text class="mono p2" x="944" y="86" font-size="13" font-weight="700" fill="#0A0A0A" text-anchor="end">10%</text><text class="mono p3" x="944" y="86" font-size="13" font-weight="700" fill="#0A0A0A" text-anchor="end">15%</text><text class="mono p4" x="944" y="86" font-size="13" font-weight="700" fill="#0A0A0A" text-anchor="end">20%</text><text class="mono p5" x="944" y="86" font-size="13" font-weight="700" fill="#0A0A0A" text-anchor="end">25%</text><text class="mono p6" x="944" y="86" font-size="13" font-weight="700" fill="#0A0A0A" text-anchor="end">30%</text><text class="mono p7" x="944" y="86" font-size="13" font-weight="700" fill="#0A0A0A" text-anchor="end">35%</text><text class="mono p8" x="944" y="86" font-size="13" font-weight="700" fill="#0A0A0A" text-anchor="end">40%</text><text class="mono p9" x="944" y="86" font-size="13" font-weight="700" fill="#0A0A0A" text-anchor="end">45%</text><text class="mono p10" x="944" y="86" font-size="13" font-weight="700" fill="#0A0A0A" text-anchor="end">50%</text><text class="mono p11" x="944" y="86" font-size="13" font-weight="700" fill="#0A0A0A" text-anchor="end">55%</text><text class="mono p12" x="944" y="86" font-size="13" font-weight="700" fill="#0A0A0A" text-anchor="end">60%</text><text class="mono p13" x="944" y="86" font-size="13" font-weight="700" fill="#0A0A0A" text-anchor="end">65%</text><text class="mono p14" x="944" y="86" font-size="13" font-weight="700" fill="#0A0A0A" text-anchor="end">70%</text><text class="mono p15" x="944" y="86" font-size="13" font-weight="700" fill="#0A0A0A" text-anchor="end">75%</text><text class="mono p16" x="944" y="86" font-size="13" font-weight="700" fill="#0A0A0A" text-anchor="end">80%</text><text class="mono p17" x="944" y="86" font-size="13" font-weight="700" fill="#0A0A0A" text-anchor="end">85%</text><text class="mono p18" x="944" y="86" font-size="13" font-weight="700" fill="#0A0A0A" text-anchor="end">90%</text><text class="mono p19" x="944" y="86" font-size="13" font-weight="700" fill="#0A0A0A" text-anchor="end">95%</text><text class="mono p20" x="944" y="86" font-size="13" font-weight="700" fill="#0A0A0A" text-anchor="end">100%</text>
+    <rect class="b0" x="640.0" y="98" width="12.3" height="14" fill="#EBEBEB"/><rect class="b1" x="655.4" y="98" width="12.3" height="14" fill="#EBEBEB"/><rect class="b2" x="670.7" y="98" width="12.3" height="14" fill="#EBEBEB"/><rect class="b3" x="686.0" y="98" width="12.3" height="14" fill="#EBEBEB"/><rect class="b4" x="701.4" y="98" width="12.3" height="14" fill="#EBEBEB"/><rect class="b5" x="716.8" y="98" width="12.3" height="14" fill="#EBEBEB"/><rect class="b6" x="732.1" y="98" width="12.3" height="14" fill="#EBEBEB"/><rect class="b7" x="747.5" y="98" width="12.3" height="14" fill="#EBEBEB"/><rect class="b8" x="762.8" y="98" width="12.3" height="14" fill="#EBEBEB"/><rect class="b9" x="778.1" y="98" width="12.3" height="14" fill="#EBEBEB"/><rect class="b10" x="793.5" y="98" width="12.3" height="14" fill="#EBEBEB"/><rect class="b11" x="808.9" y="98" width="12.3" height="14" fill="#EBEBEB"/><rect class="b12" x="824.2" y="98" width="12.3" height="14" fill="#EBEBEB"/><rect class="b13" x="839.5" y="98" width="12.3" height="14" fill="#EBEBEB"/><rect class="b14" x="854.9" y="98" width="12.3" height="14" fill="#EBEBEB"/><rect class="b15" x="870.2" y="98" width="12.3" height="14" fill="#EBEBEB"/><rect class="b16" x="885.6" y="98" width="12.3" height="14" fill="#EBEBEB"/><rect class="b17" x="901.0" y="98" width="12.3" height="14" fill="#EBEBEB"/><rect class="b18" x="916.3" y="98" width="12.3" height="14" fill="#EBEBEB"/><rect class="b19" x="931.6" y="98" width="12.3" height="14" fill="#EBEBEB"/>
+    <text class="mono" x="640" y="140" font-size="11.5" font-weight="600" letter-spacing="1.8" fill="#525252">COMFORT</text>
+    <text class="mono" x="944" y="140" font-size="13" font-weight="700" fill="#8A8A8A" text-anchor="end">0%</text>
+    <rect x="640" y="152" width="304" height="14" fill="#EBEBEB"/>
   </g>
 </svg>
