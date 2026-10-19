@@ -1,18 +1,15 @@
-`git commit -m "hello, world!"`
 
 <div align="center">
 
-**SOFTWARE DEVELOPER · CAT HERDER · OCCASIONAL DESIGNER**
-
-*I build small tools, break them, then ship them anyway.*
+*Software developer building tools for macOS and the web.*
 
 </div>
 
 ---
 
-I build web applications and macOS utilities — mostly small, opinionated tools that scratch a personal itch. A menu-bar cat that watches my AI quotas, a receipt scanner so my shoebox stops pretending to be a database, a karaoke queue manager. By day I write software at **Softtech Solution and Services Co.**
+I build web applications and macOS utilities — practical tools that solve real problems. A menu-bar usage tracker for AI quotas, a receipt scanning app, a karaoke queue manager. I work at **Softtech Solution and Services Co.** in Mati City, Philippines.
 
-I like building things that sit somewhere between **useful** and **unnecessary**. And honestly, that's probably the point.
+I enjoy the full process: designing the interface, writing the code, packaging it for distribution, and maintaining it after release.
 
 ---
 
