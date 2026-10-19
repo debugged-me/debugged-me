@@ -19,7 +19,8 @@ Software developer at **Softtech Solution and Services Co.** in Mati City, Phili
 - **Nexam** — AI-assisted faculty assessment platform: React 19, Express 5, RAG-grounded question drafting (Gemini + fallbacks), Flutter OMR grading
 - **Job platforms** — JobMatch DavOr and trabawho
 - **Mobile** — Flutter companion apps for Android & iOS: SRMS, BERPS, FTAD, LR-DavOr, SGOD, TheraLink, FBMSO attendance, trabawho
-- **Desktop & tools** — MeowBar, BERPS, and SRMS Basic Ed packaged as macOS apps; PaperTrail (receipt scanning); a web-based MySQL database manager
+- **Dev tools** — DB Manager, a browser-based workbench: MySQL Workbench–style browser, import/export, automated launchd backups, API tester, QR generator, hash utilities, and a breadboard circuit simulator with a real MNA solver
+- **Desktop** — MeowBar, BERPS, and SRMS Basic Ed packaged as macOS apps; PaperTrail (receipt scanning)
 
 ---
 
