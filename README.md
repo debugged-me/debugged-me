@@ -13,7 +13,7 @@ Software developer at **Softtech Solution and Services Co.** in Mati City, Phili
 **Selected work — mostly private repos**
 
 - **Student & school platforms** — student records systems, enrollment portals, and a multi-tenant LMS covering K-12, higher-ed, and tech-voc structures
-- **Office & operations systems** — document submission & approval workflows, evaluation monitoring, technical assistance tracking, HRIS with performance reviews, payroll, procurement
+- **Office & operations systems** — document submission & approval workflows, evaluation monitoring, technical assistance tracking, HRIS with performance reviews, an attendance portal, payroll, procurement
 - **Business systems** — a resource planning suite (web, Android/iOS, macOS desktop), clinic management, a therapy management platform, MIS with medical module
 - **Live event systems** — sports standings, campus journalism rankings, and pageant tabulation with public leaderboards
 - **AI assessment platform** — React 19, Express 5, RAG-grounded question drafting, and Flutter OMR grading
