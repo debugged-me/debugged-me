@@ -1,8 +1,8 @@
 // Draws the "Activity" card for the profile README from live GitHub data.
 // Runs in GitHub Actions: GITHUB_TOKEN=... node scripts/stats.mjs dist/stats.svg
-import { mkdirSync, writeFileSync } from "node:fs";
-import { dirname } from "node:path";
-import { pathToFileURL } from "node:url";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 const LOGIN = process.env.PROFILE_USER || "debugged-me";
 
@@ -13,7 +13,6 @@ const BORDER = "#D4D4D4";
 const BLUE = "#0A0A0A";
 const GREEN = "#0A0A0A";
 const SANS = "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif";
-const MONO = "ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace";
 
 const CALENDAR = "contributionCalendar { totalContributions weeks { contributionDays { date contributionCount } } }";
 
@@ -74,7 +73,8 @@ const fmt = (n) => n.toLocaleString("en-US");
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const shortDate = (iso) => `${MONTHS[+iso.slice(5, 7) - 1]} ${+iso.slice(8, 10)}`;
 
-export function render(data, now = new Date()) {
+// fontB64: scripts/sora.woff2 as base64, embedded so GitHub shows Sora.
+export function render(data, now = new Date(), fontB64 = null) {
   const W = 1000, H = 360;
   const allTime = Object.values(data.years).reduce((sum, y) => sum + y.total, 0);
   const { current, longest } = streaks(data.years, now.toISOString().slice(0, 10));
@@ -90,8 +90,8 @@ export function render(data, now = new Date()) {
   const metricSvg = metrics.map(([num, unit, label], i) => `
     <g class="in" style="animation-delay:${0.1 + i * 0.08}s">
       ${i ? `<line x1="${40 + i * col - 20}" y1="88" x2="${40 + i * col - 20}" y2="152" stroke="${BORDER}"/>` : ""}
-      <text class="mono" x="${40 + i * col}" y="104" font-size="11" font-weight="600" letter-spacing="1.6" fill="${FAINT}">${label}</text>
-      <text x="${40 + i * col}" y="146" font-size="38" font-weight="800" letter-spacing="-1" fill="${INK}">${num}<tspan class="mono" font-size="13" font-weight="700" letter-spacing="1" fill="${BLUE}">${unit}</tspan></text>
+      <text x="${40 + i * col}" y="104" font-size="11" font-weight="700" letter-spacing="1.6" fill="${FAINT}">${label}</text>
+      <text x="${40 + i * col}" y="146" font-size="38" font-weight="800" letter-spacing="-1" fill="${INK}">${num}<tspan font-size="13" font-weight="700" letter-spacing="1" fill="${BLUE}">${unit}</tspan></text>
     </g>`).join("");
 
   // Weekly totals for the last 52 weeks.
@@ -108,14 +108,14 @@ export function render(data, now = new Date()) {
     const fill = !w.total ? "#EBEBEB" : i === peak ? INK : BLUE;
     bars.push(`<rect class="grow" style="animation-delay:${(0.3 + i * 0.018).toFixed(3)}s" x="${x.toFixed(1)}" y="${(base - h).toFixed(1)}" width="${bw.toFixed(1)}" height="${h.toFixed(1)}" fill="${fill}"/>`);
     const month = w.start.slice(5, 7);
-    if (month !== lastMonth && i > 0 && i < weeks.length - 2) labels.push(`<text class="mono" x="${(x + bw / 2).toFixed(1)}" y="${base + 20}" font-size="10.5" font-weight="600" letter-spacing="1" fill="${FAINT}" text-anchor="middle">${MONTHS[+month - 1].toUpperCase()}</text>`);
+    if (month !== lastMonth && i > 0 && i < weeks.length - 2) labels.push(`<text x="${(x + bw / 2).toFixed(1)}" y="${base + 20}" font-size="10.5" font-weight="600" letter-spacing="1" fill="${FAINT}" text-anchor="middle">${MONTHS[+month - 1].toUpperCase()}</text>`);
     lastMonth = month;
   });
   const grid = [0.5, 1].map((f) => `<line x1="${left}" y1="${(base - tall * f).toFixed(1)}" x2="${right}" y2="${(base - tall * f).toFixed(1)}" stroke="#EBEBEB" stroke-dasharray="3 4"/>`).join("");
   const px = left + peak * slot + slot / 2, ph = Math.max(4, (weeks[peak].total / max) * tall);
   const anchor = px > 900 ? "end" : px < 100 ? "start" : "middle";
   const peakSvg = weeks[peak].total
-    ? `<g class="in" style="animation-delay:1.4s"><text class="mono" x="${px.toFixed(1)}" y="${(base - ph - 9).toFixed(1)}" font-size="12" font-weight="700" fill="${INK}" text-anchor="${anchor}">${fmt(weeks[peak].total)}</text></g>`
+    ? `<g class="in" style="animation-delay:1.4s"><text x="${px.toFixed(1)}" y="${(base - ph - 9).toFixed(1)}" font-size="12" font-weight="700" fill="${INK}" text-anchor="${anchor}">${fmt(weeks[peak].total)}</text></g>`
     : "";
 
   const updated = now.toISOString().slice(0, 10);
@@ -125,8 +125,8 @@ export function render(data, now = new Date()) {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="${summary}">
   <title>${summary}</title>
   <style>
-text { font-family: ${SANS}; }
-.mono { font-family: ${MONO}; }
+${fontB64 ? `@font-face { font-family: 'Sora'; src: url(data:font/woff2;base64,${fontB64}) format('woff2'); font-weight: 100 800; }` : ""}
+text { font-family: 'Sora', ${SANS}; }
 .in { animation: in .7s cubic-bezier(.2,.8,.2,1) both; }
 @keyframes in { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: none; } }
 .grow { transform-box: fill-box; transform-origin: bottom; animation: grow .9s cubic-bezier(.2,.8,.2,1) both; }
@@ -147,13 +147,13 @@ text { font-family: ${SANS}; }
   <rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" rx="5.5" fill="none" stroke="${BORDER}"/>
   <g fill="none" stroke="${INK}" stroke-width="1.6">${crop}</g>
   <rect x="40" y="35" width="10" height="10" fill="${BLUE}"/>
-  <text class="mono" x="60" y="45" font-size="13" font-weight="700" letter-spacing="2.4" fill="${INK}">ACTIVITY</text>
+  <text x="60" y="45" font-size="13" font-weight="800" letter-spacing="2.4" fill="${INK}">ACTIVITY</text>
   <circle class="live" cx="${960 - 5}" cy="40.5" r="3.5" fill="${GREEN}"/>
   <circle cx="${960 - 5}" cy="40.5" r="3.5" fill="${GREEN}"/>
-  <text class="mono" x="${960 - 16}" y="45" font-size="11" font-weight="600" letter-spacing="1.2" fill="${FAINT}" text-anchor="end">UPDATED ${updated}</text>
+  <text x="${960 - 16}" y="45" font-size="11" font-weight="600" letter-spacing="1.2" fill="${FAINT}" text-anchor="end">UPDATED ${updated}</text>
   <line x1="40" y1="64" x2="960" y2="64" stroke="${BORDER}"/>
   ${metricSvg}
-  <text class="mono" x="40" y="200" font-size="11" font-weight="600" letter-spacing="1.6" fill="${FAINT}">CONTRIBUTIONS / WEEK</text>
+  <text x="40" y="200" font-size="11" font-weight="700" letter-spacing="1.6" fill="${FAINT}">CONTRIBUTIONS / WEEK</text>
   ${grid}
   ${bars.join("\n  ")}
   <line x1="${left}" y1="${base}" x2="${right}" y2="${base}" stroke="${BORDER}"/>
@@ -167,7 +167,8 @@ async function main() {
   const out = process.argv[2] || "dist/stats.svg";
   const token = process.env.GITHUB_TOKEN;
   if (!token) throw new Error("GITHUB_TOKEN is not set");
-  const svg = render(await load(LOGIN, token));
+  const font = readFileSync(join(dirname(fileURLToPath(import.meta.url)), "sora.woff2")).toString("base64");
+  const svg = render(await load(LOGIN, token), new Date(), font);
   mkdirSync(dirname(out), { recursive: true });
   writeFileSync(out, svg);
   console.log(`wrote ${out}`);

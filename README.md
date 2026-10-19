@@ -8,9 +8,9 @@
 
 <!-- public-apps:start -->
 <p align="center">
-  <a href="https://github.com/debugged-me/MeowBar"><img src="https://raw.githubusercontent.com/debugged-me/debugged-me/output/app-meowbar.svg" width="32%" alt="MeowBar — macOS menu-bar monitor"/></a>
-  <a href="https://github.com/debugged-me/PaperTrail"><img src="https://raw.githubusercontent.com/debugged-me/debugged-me/output/app-papertrail.svg" width="32%" alt="PaperTrail — Receipt scanning"/></a>
-  <a href="https://github.com/debugged-me/Queueoke"><img src="https://raw.githubusercontent.com/debugged-me/debugged-me/output/app-queueoke.svg" width="32%" alt="Queueoke — Karaoke queue"/></a>
+  <a href="https://github.com/debugged-me/MeowBar"><img src="https://raw.githubusercontent.com/debugged-me/debugged-me/output/app-meowbar.svg" width="32%" alt="MeowBar — Usage Tracker"/></a>
+  <a href="https://github.com/debugged-me/PaperTrail"><img src="https://raw.githubusercontent.com/debugged-me/debugged-me/output/app-papertrail.svg" width="32%" alt="PaperTrail — Because your shoebox is not a valid database. A receipt scanning and management app."/></a>
+  <a href="https://github.com/debugged-me/Queueoke"><img src="https://raw.githubusercontent.com/debugged-me/debugged-me/output/app-queueoke.svg" width="32%" alt="Queueoke — PHP project"/></a>
 </p>
 <!-- public-apps:end -->
 
