@@ -1,15 +1,18 @@
+`git commit -m "hello, world!"`
 
 <div align="center">
 
-*Software developer building tools for macOS and the web.*
+**SOFTWARE DEVELOPER · WEB & MACOS**
+
+*Building applications, designing interfaces, and shipping finished products.*
 
 </div>
 
 ---
 
-I build web applications and macOS utilities — practical tools that solve real problems. A menu-bar usage tracker for AI quotas, a receipt scanning app, a karaoke queue manager. I work at **Softtech Solution and Services Co.** in Mati City, Philippines.
+Software developer at **Softtech Solution and Services Co.** in Mati City, Philippines, building web applications and native macOS utilities. I work across the stack — PHP backends, MySQL databases, front-end interfaces — and develop Swift apps distributed through Homebrew.
 
-I enjoy the full process: designing the interface, writing the code, packaging it for distribution, and maintaining it after release.
+Shipped projects include **MeowBar**, a menu-bar usage monitor for macOS; **PaperTrail**, a receipt scanning and management app; and **Queueoke**, a PHP-based karaoke queue system.
 
 ---
 
@@ -35,6 +38,6 @@ I enjoy the full process: designing the interface, writing the code, packaging i
 
 <div align="center">
 
-*T̸h̸i̸s̸ ̸u̸s̸e̸r̸ ̸a̸p̸p̸e̸a̸r̸s̸ ̸t̸o̸ ̸b̸e̸ ̸l̸a̸z̸y̸*
+*Fear with progress is better than comfort with none.*
 
 </div>
