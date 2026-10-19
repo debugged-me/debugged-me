@@ -1,16 +1,6 @@
-<div align="center">
-
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:0F2027,50:203A43,100:2C5364&height=220&section=header&text=Clark&fontSize=72&fontColor=ffffff&fontAlignY=36&animation=twinkling&desc=SOFTWARE%20DEVELOPER%20·%20WEB%20·%20MOBILE%20·%20MACOS&descSize=16&descAlignY=58"/>
-
-<a href="https://github.com/debugged-me">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=18&duration=3000&pause=1000&color=58A6FF&center=true&vCenter=true&width=640&lines=I+build+the+systems+that+schools+and+offices+run+on.;PHP+%C2%B7+CodeIgniter+%C2%B7+Laravel+%C2%B7+MySQL;Flutter+for+Android+%26+iOS+%C2%B7+Swift+for+macOS;Most+of+my+work+lives+in+private+repositories." alt="Typing SVG"/>
-</a>
-
-<img src="https://komarev.com/ghpvc/?username=debugged-me&style=flat-square&color=2C5364&label=PROFILE+VIEWS" alt="Profile views"/>
-
-</div>
-
----
+<p align="center">
+  <img src="assets/header.svg" width="100%" alt="Clark — Software Developer · Web · Mobile · macOS"/>
+</p>
 
 Software developer at **Softtech Solution and Services Co.** in Mati City, Philippines. I design, build, deploy, and maintain production systems — mostly PHP (CodeIgniter / Laravel) and MySQL — for schools, government offices, clinics, and organizations across Davao Region. The bulk of that work lives in private repositories.
 
@@ -26,45 +16,21 @@ Software developer at **Softtech Solution and Services Co.** in Mati City, Phili
 - **Dev tools** — a browser-based workbench: MySQL Workbench–style database browser, import/export, automated backups, API tester, QR generator, hash utilities, and a breadboard circuit simulator
 - **Public apps** — [MeowBar](https://github.com/debugged-me/MeowBar) (macOS menu-bar monitor), [PaperTrail](https://github.com/debugged-me/PaperTrail) (receipt scanning), [Queueoke](https://github.com/debugged-me/Queueoke) (karaoke queue)
 
----
+<p align="center">
+  <img src="assets/stack.svg" width="100%" alt="Tech stack: PHP, CodeIgniter, Laravel, MySQL, Node.js, JavaScript, React, HTML, CSS, Dart, Flutter, Android, Swift, macOS, Git, Homebrew"/>
+</p>
 
-<div align="center">
+<p align="center">
+  <img src="https://raw.githubusercontent.com/debugged-me/debugged-me/output/stats.svg" width="100%" alt="GitHub activity"/>
+</p>
 
-![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
-![CODEIGNITER](https://img.shields.io/badge/CODEIGNITER-EF4223?style=for-the-badge&logo=codeigniter&logoColor=white)
-![LARAVEL](https://img.shields.io/badge/LARAVEL-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
-![MYSQL](https://img.shields.io/badge/MYSQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
-![JAVASCRIPT](https://img.shields.io/badge/JAVASCRIPT-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![HTML](https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/debugged-me/debugged-me/output/snake-dark.svg"/>
+    <img src="https://raw.githubusercontent.com/debugged-me/debugged-me/output/snake-light.svg" width="100%" alt="A snake eating my contribution graph"/>
+  </picture>
+</p>
 
-![REACT](https://img.shields.io/badge/REACT-61DAFB?style=for-the-badge&logo=react&logoColor=black)
-![NODE.JS](https://img.shields.io/badge/NODE.JS-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
-![DART](https://img.shields.io/badge/DART-0175C2?style=for-the-badge&logo=dart&logoColor=white)
-![FLUTTER](https://img.shields.io/badge/FLUTTER-02569B?style=for-the-badge&logo=flutter&logoColor=white)
-![ANDROID](https://img.shields.io/badge/ANDROID-3DDC84?style=for-the-badge&logo=android&logoColor=white)
-![SWIFT](https://img.shields.io/badge/SWIFT-F05138?style=for-the-badge&logo=swift&logoColor=white)
-![MACOS](https://img.shields.io/badge/MACOS-000000?style=for-the-badge&logo=apple&logoColor=white)
-![GIT](https://img.shields.io/badge/GIT-F05032?style=for-the-badge&logo=git&logoColor=white)
-![HOMEBREW](https://img.shields.io/badge/HOMEBREW-FBB040?style=for-the-badge&logo=homebrew&logoColor=black)
-
-</div>
-
----
-
-<div align="center">
-
-<img height="170" src="https://github-readme-stats.vercel.app/api?username=debugged-me&custom_title=Clark%27s%20GitHub%20Stats&show_icons=true&include_all_commits=true&rank_icon=github&hide_border=true&border_radius=10&bg_color=30,0F2027,203A43,2C5364&title_color=58A6FF&icon_color=58A6FF&text_color=E6EDF3&ring_color=58A6FF" alt="GitHub stats"/>
-<img height="170" src="https://streak-stats.demolab.com?user=debugged-me&hide_border=true&border_radius=10&background=30,0F2027,203A43,2C5364&ring=58A6FF&fire=58A6FF&currStreakLabel=58A6FF&sideLabels=E6EDF3&currStreakNum=FFFFFF&sideNums=FFFFFF&dates=8B949E&stroke=2C5364" alt="GitHub streak"/>
-
-<br/><br/>
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/debugged-me/debugged-me/output/snake-dark.svg"/>
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/debugged-me/debugged-me/output/snake-light.svg"/>
-  <img alt="Contribution snake" src="https://raw.githubusercontent.com/debugged-me/debugged-me/output/snake-dark.svg"/>
-</picture>
-
-</div>
-
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:2C5364,50:203A43,100:0F2027&height=150&section=footer&text=Fear%20with%20progress%20is%20better%20than%20comfort%20with%20none.&fontSize=18&fontColor=ffffff&fontAlignY=70&animation=fadeIn"/>
+<p align="center">
+  <img src="assets/footer.svg" width="100%" alt="Fear with progress is better than comfort with none."/>
+</p>
