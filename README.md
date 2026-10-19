@@ -12,13 +12,13 @@ Software developer at **Softtech Solution and Services Co.** in Mati City, Phili
 
 **Selected work**
 
-- **Student & school platforms** — multi-client SRMS records systems, a multi-tenant LMS covering DepEd, CHED, and TESDA structures, and the AISAT school portal
-- **DepEd Region XI systems** — CLMD document approval, QAME daily evaluations, FTAD technical assistance, SGOD (HRIS + IPCR performance reviews), payroll, BAC procurement
-- **Business & operations** — BERPS (Business Resource Planning System — web, Android/iOS, macOS desktop), clinic management, TheraLink PH therapy platform, MIS with medical module
-- **Live event systems** — intramurals standings, campus journalism rankings, and Binibining Mati 2026 tabulation with public leaderboards
+- **Student & school platforms** — multi-client student records systems, a multi-tenant LMS covering K-12, higher-ed, and tech-voc structures, and a school enrollment portal
+- **Division & regional office systems** — document submission & approval workflows, daily evaluation monitoring, technical assistance tracking, HRIS with performance reviews, payroll, procurement
+- **Business & operations** — BERPS (Business Resource Planning System — web, Android/iOS, macOS desktop), clinic management, a therapy management platform, MIS with medical module
+- **Live event systems** — sports standings, campus journalism rankings, and pageant tabulation with public leaderboards
 - **Nexam** — AI-assisted faculty assessment platform: React 19, Express 5, RAG-grounded question drafting (Gemini + fallbacks), Flutter OMR grading
-- **Job platforms** — JobMatch DavOr and trabawho
-- **Mobile** — Flutter companion apps for Android & iOS: SRMS, BERPS, FTAD, LR-DavOr, SGOD, TheraLink, FBMSO attendance, trabawho
+- **Job platforms** — JobMatch and TrabaWHO
+- **Mobile** — Flutter companion apps for Android & iOS across records, attendance, therapy, and job platforms
 - **Dev tools** — DB Manager, a browser-based workbench: MySQL Workbench–style browser, import/export, automated launchd backups, API tester, QR generator, hash utilities, and a breadboard circuit simulator with a real MNA solver
 - **Desktop** — MeowBar, BERPS, and SRMS Basic Ed packaged as macOS apps; PaperTrail (receipt scanning)
 
