@@ -6,11 +6,13 @@
   <img src="assets/about.svg" width="100%" alt="Software developer at Softtech Solution and Services Co. in Mati City, Philippines. I design, build, deploy, and maintain production systems — mostly PHP (CodeIgniter / Laravel) and MySQL — for schools, government offices, clinics, and organizations across Davao Region. What I build: student and school platforms, office and operations systems, business systems, live event systems, an AI assessment platform, job platforms, mobile apps, and dev tools."/>
 </p>
 
+<!-- public-apps:start -->
 <p align="center">
-  <a href="https://github.com/debugged-me/MeowBar"><img src="assets/app-meowbar.svg" width="32%" alt="MeowBar — macOS menu-bar monitor"/></a>
-  <a href="https://github.com/debugged-me/PaperTrail"><img src="assets/app-papertrail.svg" width="32%" alt="PaperTrail — Receipt scanning"/></a>
-  <a href="https://github.com/debugged-me/Queueoke"><img src="assets/app-queueoke.svg" width="32%" alt="Queueoke — Karaoke queue"/></a>
+  <a href="https://github.com/debugged-me/MeowBar"><img src="https://raw.githubusercontent.com/debugged-me/debugged-me/output/app-meowbar.svg" width="32%" alt="MeowBar — Usage Tracker"/></a>
+  <a href="https://github.com/debugged-me/PaperTrail"><img src="https://raw.githubusercontent.com/debugged-me/debugged-me/output/app-papertrail.svg" width="32%" alt="PaperTrail — Because your shoebox is not a valid database. A receipt scanning and management app."/></a>
+  <a href="https://github.com/debugged-me/Queueoke"><img src="https://raw.githubusercontent.com/debugged-me/debugged-me/output/app-queueoke.svg" width="32%" alt="Queueoke — PHP project"/></a>
 </p>
+<!-- public-apps:end -->
 
 <br/>
 
