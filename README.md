@@ -1,5 +1,3 @@
-`git commit -m "hello, world!"`
-
 <div align="center">
 
 **SOFTWARE DEVELOPER · WEB · MOBILE · MACOS**
@@ -14,12 +12,14 @@ Software developer at **Softtech Solution and Services Co.** in Mati City, Phili
 
 **Selected work**
 
-- **Student & school platforms** — multi-client SRMS records systems, enrollment, grading, and a multi-tenant LMS covering DepEd, CHED, and TESDA structures
-- **DepEd Region XI workflows** — CLMD document submission & approval, QAME monitoring, FTAD technical assistance, HRIS, payroll
+- **Student & school platforms** — multi-client SRMS records systems, a multi-tenant LMS covering DepEd, CHED, and TESDA structures, and the AISAT school portal
+- **DepEd Region XI systems** — CLMD document approval, QAME daily evaluations, FTAD technical assistance, SGOD (HRIS + IPCR performance reviews), payroll, BAC procurement
+- **Business & operations** — BERPS (Business Resource Planning System — web, Android/iOS, macOS desktop), clinic management, TheraLink PH therapy platform, MIS with medical module
 - **Live event systems** — intramurals standings, campus journalism rankings, and Binibining Mati 2026 tabulation with public leaderboards
-- **Nexam** — AI-assisted faculty assessment platform: React 19, Express 5, RAG-grounded question drafting (Gemini + fallbacks), and Flutter OMR grading
-- **Mobile** — Flutter companion apps for SRMS, BERPS, FTAD, LR-DavOr, and trabawho
-- **Desktop & tools** — MeowBar (macOS menu-bar monitor), PaperTrail (receipt scanning), a web-based MySQL database manager
+- **Nexam** — AI-assisted faculty assessment platform: React 19, Express 5, RAG-grounded question drafting (Gemini + fallbacks), Flutter OMR grading
+- **Job platforms** — JobMatch DavOr and trabawho
+- **Mobile** — Flutter companion apps for Android & iOS: SRMS, BERPS, FTAD, LR-DavOr, SGOD, TheraLink, FBMSO attendance, trabawho
+- **Desktop & tools** — MeowBar, BERPS, and SRMS Basic Ed packaged as macOS apps; PaperTrail (receipt scanning); a web-based MySQL database manager
 
 ---
 
@@ -37,6 +37,7 @@ Software developer at **Softtech Solution and Services Co.** in Mati City, Phili
 ![NODE.JS](https://img.shields.io/badge/NODE.JS-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
 ![DART](https://img.shields.io/badge/DART-0175C2?style=for-the-badge&logo=dart&logoColor=white)
 ![FLUTTER](https://img.shields.io/badge/FLUTTER-02569B?style=for-the-badge&logo=flutter&logoColor=white)
+![ANDROID](https://img.shields.io/badge/ANDROID-3DDC84?style=for-the-badge&logo=android&logoColor=white)
 ![SWIFT](https://img.shields.io/badge/SWIFT-F05138?style=for-the-badge&logo=swift&logoColor=white)
 ![MACOS](https://img.shields.io/badge/MACOS-000000?style=for-the-badge&logo=apple&logoColor=white)
 ![GIT](https://img.shields.io/badge/GIT-F05032?style=for-the-badge&logo=git&logoColor=white)
