@@ -73,6 +73,47 @@ const fmt = (n) => n.toLocaleString("en-US");
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const shortDate = (iso) => `${MONTHS[+iso.slice(5, 7) - 1]} ${+iso.slice(8, 10)}`;
 
+// The white card with grid, border and corner marks that every Activity variant sits on.
+function card(W, H, inset, arm, summary, fontB64, body) {
+  const crop = [[inset, inset, 1, 1], [W - inset, inset, -1, 1], [inset, H - inset, 1, -1], [W - inset, H - inset, -1, -1]]
+    .map(([x, y, sx, sy]) => `<path d="M${x} ${y + sy * arm} V${y} H${x + sx * arm}"/>`).join("");
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="${summary}">
+  <title>${summary}</title>
+  <style>
+${fontB64 ? `@font-face { font-family: 'Sora'; src: url(data:font/woff2;base64,${fontB64}) format('woff2'); font-weight: 100 800; }` : ""}
+text { font-family: 'Sora', ${SANS}; }
+.in { animation: in .7s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes in { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: none; } }
+.grow { transform-box: fill-box; transform-origin: bottom; animation: grow .9s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes grow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+.live { transform-box: fill-box; transform-origin: center; animation: live 2s ease-out infinite; }
+@keyframes live { 0% { opacity: .6; transform: scale(1); } 80%, 100% { opacity: 0; transform: scale(2.8); } }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+  <defs>
+    <clipPath id="card"><rect width="${W}" height="${H}" rx="6"/></clipPath>
+    <pattern id="minor" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#F0F0F0"/></pattern>
+    <pattern id="major" width="120" height="120" patternUnits="userSpaceOnUse"><rect width="120" height="120" fill="url(#minor)"/><path d="M120 0H0V120" fill="none" stroke="#E5E5E5"/></pattern>
+  </defs>
+  <g clip-path="url(#card)">
+    <rect width="${W}" height="${H}" fill="#FFFFFF"/>
+    <rect width="${W}" height="${H}" fill="url(#major)" opacity=".7"/>
+  </g>
+  <rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" rx="5.5" fill="none" stroke="${BORDER}"/>
+  <g fill="none" stroke="${INK}" stroke-width="1.6">${crop}</g>
+${body}
+</svg>
+`;
+}
+
+// Weekly totals for the last n weeks, plus the busiest week.
+function weekly(data, n) {
+  const weeks = data.pastYear.weeks.slice(-n).map((w) => ({ start: w[0].date, total: w.reduce((s, d) => s + d.count, 0) }));
+  const max = Math.max(1, ...weeks.map((w) => w.total));
+  const peak = weeks.reduce((best, w, i) => (w.total > weeks[best].total ? i : best), 0);
+  return { weeks, max, peak };
+}
+
 // fontB64: scripts/sora.woff2 as base64, embedded so GitHub shows Sora.
 export function render(data, now = new Date(), fontB64 = null) {
   const W = 1000, H = 360;
@@ -120,33 +161,8 @@ export function render(data, now = new Date(), fontB64 = null) {
 
   const updated = now.toISOString().slice(0, 10);
   const summary = `GitHub activity: ${fmt(data.pastYear.total)} contributions in the past year, ${fmt(allTime)} all time, current streak ${current} days, longest streak ${longest.length} days.`;
-  const crop = [[14, 14, 1, 1], [W - 14, 14, -1, 1], [14, H - 14, 1, -1], [W - 14, H - 14, -1, -1]].map(([x, y, sx, sy]) => `<path d="M${x} ${y + sy * 12} V${y} H${x + sx * 12}"/>`).join("");
 
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="${summary}">
-  <title>${summary}</title>
-  <style>
-${fontB64 ? `@font-face { font-family: 'Sora'; src: url(data:font/woff2;base64,${fontB64}) format('woff2'); font-weight: 100 800; }` : ""}
-text { font-family: 'Sora', ${SANS}; }
-.in { animation: in .7s cubic-bezier(.2,.8,.2,1) both; }
-@keyframes in { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: none; } }
-.grow { transform-box: fill-box; transform-origin: bottom; animation: grow .9s cubic-bezier(.2,.8,.2,1) both; }
-@keyframes grow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
-.live { transform-box: fill-box; transform-origin: center; animation: live 2s ease-out infinite; }
-@keyframes live { 0% { opacity: .6; transform: scale(1); } 80%, 100% { opacity: 0; transform: scale(2.8); } }
-@media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
-  </style>
-  <defs>
-    <clipPath id="card"><rect width="${W}" height="${H}" rx="6"/></clipPath>
-    <pattern id="minor" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#F0F0F0"/></pattern>
-    <pattern id="major" width="120" height="120" patternUnits="userSpaceOnUse"><rect width="120" height="120" fill="url(#minor)"/><path d="M120 0H0V120" fill="none" stroke="#E5E5E5"/></pattern>
-  </defs>
-  <g clip-path="url(#card)">
-    <rect width="${W}" height="${H}" fill="#FFFFFF"/>
-    <rect width="${W}" height="${H}" fill="url(#major)" opacity=".7"/>
-  </g>
-  <rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" rx="5.5" fill="none" stroke="${BORDER}"/>
-  <g fill="none" stroke="${INK}" stroke-width="1.6">${crop}</g>
-  <rect x="40" y="35" width="10" height="10" fill="${BLUE}"/>
+  return card(W, H, 14, 12, summary, fontB64, `  <rect x="40" y="35" width="10" height="10" fill="${BLUE}"/>
   <text x="60" y="45" font-size="13" font-weight="800" letter-spacing="2.4" fill="${INK}">ACTIVITY</text>
   <circle class="live" cx="${960 - 5}" cy="40.5" r="3.5" fill="${GREEN}"/>
   <circle cx="${960 - 5}" cy="40.5" r="3.5" fill="${GREEN}"/>
@@ -158,9 +174,72 @@ text { font-family: 'Sora', ${SANS}; }
   ${bars.join("\n  ")}
   <line x1="${left}" y1="${base}" x2="${right}" y2="${base}" stroke="${BORDER}"/>
   ${labels.join("\n  ")}
-  ${peakSvg}
-</svg>
-`;
+  ${peakSvg}`);
+}
+
+// Phone version: 400 wide, numbers in a 2 x 2 grid, the last 26 weeks of bars.
+export function renderMobile(data, now = new Date(), fontB64 = null) {
+  const W = 400, P = 24;
+  const allTime = Object.values(data.years).reduce((sum, y) => sum + y.total, 0);
+  const { current, longest } = streaks(data.years, now.toISOString().slice(0, 10));
+  const days = (n) => (n === 1 ? " DAY" : " DAYS");
+  const metrics = [
+    [fmt(data.pastYear.total), "", "PAST YEAR", ""],
+    [fmt(allTime), "", "ALL TIME", ""],
+    [fmt(current), days(current), "CURRENT STREAK", ""],
+    [fmt(longest.length), days(longest.length), "LONGEST STREAK", longest.length ? `${shortDate(longest.start)} – ${shortDate(longest.end)}`.toUpperCase() : ""],
+  ];
+  const cell = [[P, 72], [212, 72], [P, 160], [212, 160]];
+  const metricSvg = metrics.map(([num, unit, label, sub], i) => {
+    const [x, y] = cell[i];
+    return `
+    <g class="in" style="animation-delay:${0.1 + i * 0.08}s">
+      <text x="${x}" y="${y + 18}" font-size="10" font-weight="700" letter-spacing="1.4" fill="${FAINT}">${label}</text>
+      <text x="${x}" y="${y + 56}" font-size="34" font-weight="800" letter-spacing="-1" fill="${INK}">${num}<tspan font-size="12" font-weight="700" letter-spacing="1" fill="${BLUE}">${unit}</tspan></text>
+      ${sub ? `<text x="${x}" y="${y + 74}" font-size="10" font-weight="600" letter-spacing="1" fill="${FAINT}">${sub}</text>` : ""}
+    </g>`;
+  }).join("");
+
+  const { weeks, max, peak } = weekly(data, 26);
+  const left = P, right = W - P, base = 392, tall = 90;
+  const slot = (right - left) / weeks.length, bw = slot * 0.6;
+  let lastMonth = null;
+  const bars = [], labels = [];
+  weeks.forEach((w, i) => {
+    const x = left + i * slot + (slot - bw) / 2;
+    const h = w.total ? Math.max(4, (w.total / max) * tall) : 2;
+    const fill = !w.total ? "#EBEBEB" : i === peak ? INK : BLUE;
+    bars.push(`<rect class="grow" style="animation-delay:${(0.3 + i * 0.03).toFixed(2)}s" x="${x.toFixed(1)}" y="${(base - h).toFixed(1)}" width="${bw.toFixed(1)}" height="${h.toFixed(1)}" fill="${fill}"/>`);
+    const month = w.start.slice(5, 7);
+    if (month !== lastMonth && i > 0 && i < weeks.length - 1) labels.push(`<text x="${(x + bw / 2).toFixed(1)}" y="${base + 18}" font-size="9.5" font-weight="600" letter-spacing="1" fill="${FAINT}" text-anchor="middle">${MONTHS[+month - 1].toUpperCase()}</text>`);
+    lastMonth = month;
+  });
+  const px = left + peak * slot + slot / 2, ph = Math.max(4, (weeks[peak].total / max) * tall);
+  const anchor = px > W - 50 ? "end" : px < 50 ? "start" : "middle";
+  const peakSvg = weeks[peak].total
+    ? `<g class="in" style="animation-delay:1.2s"><text x="${px.toFixed(1)}" y="${(base - ph - 8).toFixed(1)}" font-size="11" font-weight="700" fill="${INK}" text-anchor="${anchor}">${fmt(weeks[peak].total)}</text></g>`
+    : "";
+  const updated = now.toISOString().slice(0, 10);
+  const summary = `GitHub activity: ${fmt(data.pastYear.total)} contributions in the past year, ${fmt(allTime)} all time, current streak ${current} days, longest streak ${longest.length} days.`;
+  const H = base + 46;
+
+  return card(W, H, 12, 10, summary, fontB64, `  <rect x="${P}" y="30" width="10" height="10" fill="${BLUE}"/>
+  <text x="${P + 20}" y="40" font-size="12.5" font-weight="800" letter-spacing="2.4" fill="${INK}">ACTIVITY</text>
+  <circle class="live" cx="${W - P - 4}" cy="35.5" r="3.5" fill="${GREEN}"/>
+  <circle cx="${W - P - 4}" cy="35.5" r="3.5" fill="${GREEN}"/>
+  <text x="${W - P - 14}" y="40" font-size="10" font-weight="600" letter-spacing="1" fill="${FAINT}" text-anchor="end">UPDATED ${updated}</text>
+  <line x1="${P}" y1="58" x2="${W - P}" y2="58" stroke="${BORDER}"/>
+  <line x1="200" y1="76" x2="200" y2="138" stroke="${BORDER}"/>
+  <line x1="200" y1="164" x2="200" y2="236" stroke="${BORDER}"/>
+  <line x1="${P}" y1="150" x2="${W - P}" y2="150" stroke="${BORDER}"/>
+  ${metricSvg}
+  <line x1="${P}" y1="252" x2="${W - P}" y2="252" stroke="${BORDER}"/>
+  <text x="${P}" y="280" font-size="10" font-weight="700" letter-spacing="1.4" fill="${FAINT}">CONTRIBUTIONS / WEEK · LAST 6 MONTHS</text>
+  ${[0.5, 1].map((f) => `<line x1="${left}" y1="${(base - tall * f).toFixed(1)}" x2="${right}" y2="${(base - tall * f).toFixed(1)}" stroke="#EBEBEB" stroke-dasharray="3 4"/>`).join("")}
+  ${bars.join("\n  ")}
+  <line x1="${left}" y1="${base}" x2="${right}" y2="${base}" stroke="${BORDER}"/>
+  ${labels.join("\n  ")}
+  ${peakSvg}`);
 }
 
 async function main() {
@@ -168,12 +247,15 @@ async function main() {
   const token = process.env.GITHUB_TOKEN;
   if (!token) throw new Error("GITHUB_TOKEN is not set");
   const font = readFileSync(join(dirname(fileURLToPath(import.meta.url)), "sora.woff2")).toString("base64");
-  const svg = render(await load(LOGIN, token), new Date(), font);
+  const data = await load(LOGIN, token);
+  const now = new Date();
+  const outMobile = out.replace(/\.svg$/, "-m.svg");
   mkdirSync(dirname(out), { recursive: true });
-  writeFileSync(out, svg);
-  console.log(`wrote ${out}`);
+  writeFileSync(out, render(data, now, font));
+  writeFileSync(outMobile, renderMobile(data, now, font));
+  console.log(`wrote ${out} and ${outMobile}`);
 }
 
-if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   main().catch((err) => { console.error(err.message); process.exit(1); });
 }

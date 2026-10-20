@@ -121,10 +121,48 @@ text { font-family: ${FAMILY}; }
 `;
 }
 
+// Phone version: on a phone a tile is a third of the screen (~115px), so the canvas is
+// 120 wide and the text renders near its real size.
+export function tileMobile(repo, fontB64) {
+  const W = 120, H = 150, inner = 96;
+  const label = (repo.language || "App").toUpperCase();
+  const nameSize = Math.max(11, Math.min(17, 17 * inner / width(repo.name, 17, 800)));
+  const name = clip(repo.name, nameSize, 800, inner);
+  const desc = wrap(describe(repo), 11, 300, inner, 4);
+  const crop = [[7, 7, 1, 1], [W - 7, 7, -1, 1], [7, H - 7, 1, -1], [W - 7, H - 7, -1, -1]]
+    .map(([x, y, sx, sy]) => `<path d="M${x} ${y + sy * 8} V${y} H${x + sx * 8}"/>`).join("");
+  const summary = `${repo.name} — ${describe(repo)}`;
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="${esc(summary)}">
+  <title>${esc(summary)}</title>
+  <style>
+@font-face { font-family: 'Sora'; src: url(data:font/woff2;base64,${fontB64}) format('woff2'); font-weight: 100 800; }
+text { font-family: ${FAMILY}; }
+.in { animation: in .7s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes in { from { opacity: 0; transform: translateX(-6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+  <rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" rx="5.5" fill="#FFFFFF" stroke="${BORDER}"/>
+  <g fill="none" stroke="${INK}" stroke-width="1.4">${crop}</g>
+  <g class="in">
+    <text x="12" y="28" font-size="8" font-weight="700" letter-spacing="1.2" fill="${FAINT}">${esc(label)}</text>
+    <text x="12" y="58" font-size="${nameSize.toFixed(1)}" font-weight="800" letter-spacing="-.3" fill="${INK}">${esc(name)}</text>
+    ${desc.map((line, i) => `<text x="12" y="${80 + i * 14}" font-size="11" font-weight="300" fill="${BODY}">${esc(line)}</text>`).join("\n    ")}
+  </g>
+  <g class="in" style="animation-delay:.2s" fill="none" stroke="${INK}" stroke-width="1.8" stroke-linecap="square">
+    <path d="M${W - 30} 19 H${W - 18} V31 M${W - 18} 19 L${W - 32} 33"/>
+  </g>
+</svg>
+`;
+}
+
 export function readmeBlock(list) {
   if (!list.length) return "";
-  const links = list.map((r) =>
-    `  <a href="${r.html_url}"><img src="${RAW}/app-${slug(r.name)}.svg" width="32%" alt="${esc(`${r.name} — ${describe(r)}`)}"/></a>`);
+  // On screens under 600px wide the phone tile is used instead.
+  const links = list.map((r) => {
+    const s = slug(r.name);
+    return `  <a href="${r.html_url}"><picture><source media="(max-width: 600px)" srcset="${RAW}/app-${s}-m.svg"><img src="${RAW}/app-${s}.svg" width="32%" alt="${esc(`${r.name} — ${describe(r)}`)}"></picture></a>`;
+  });
   return `<p align="center">\n${links.join("\n")}\n</p>`;
 }
 
@@ -133,7 +171,10 @@ async function main() {
   const font = readFileSync(join(dirname(fileURLToPath(import.meta.url)), "sora.woff2")).toString("base64");
   const list = await repos(LOGIN, process.env.GITHUB_TOKEN);
   mkdirSync(outDir, { recursive: true });
-  for (const r of list) writeFileSync(join(outDir, `app-${slug(r.name)}.svg`), tile(r, font));
+  for (const r of list) {
+    writeFileSync(join(outDir, `app-${slug(r.name)}.svg`), tile(r, font));
+    writeFileSync(join(outDir, `app-${slug(r.name)}-m.svg`), tileMobile(r, font));
+  }
 
   const md = readFileSync(readmePath, "utf8");
   const a = md.indexOf(START), b = md.indexOf(END);

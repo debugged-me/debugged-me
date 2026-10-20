@@ -1,16 +1,22 @@
 <p align="center">
-  <img src="assets/header.svg" width="100%" alt="Clark — Software Developer · Web · Mobile · macOS · Mati City, Philippines"/>
+  <picture>
+    <source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/debugged-me/debugged-me/main/assets/header-m.svg">
+    <img src="assets/header.svg" width="100%" alt="Clark — Software Developer · Web · Mobile · macOS · Mati City, Philippines">
+  </picture>
 </p>
 
 <p align="center">
-  <img src="assets/about.svg" width="100%" alt="Software developer at Softtech Solution and Services Co. in Mati City, Philippines. I design, build, deploy, and maintain production systems — mostly PHP (CodeIgniter / Laravel) and MySQL — for schools, government offices, clinics, and organizations across Davao Region. What I build: student and school platforms, office and operations systems, business systems, live event systems, an AI assessment platform, job platforms, mobile apps, and dev tools."/>
+  <picture>
+    <source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/debugged-me/debugged-me/main/assets/about-m.svg">
+    <img src="assets/about.svg" width="100%" alt="Software developer at Softtech Solution and Services Co. in Mati City, Philippines. I design, build, deploy, and maintain production systems — mostly PHP (CodeIgniter / Laravel) and MySQL — for schools, government offices, clinics, and organizations across Davao Region. What I build: student and school platforms, office and operations systems, business systems, live event systems, an AI assessment platform, job platforms, mobile apps, and dev tools.">
+  </picture>
 </p>
 
 <!-- public-apps:start -->
 <p align="center">
-  <a href="https://github.com/debugged-me/MeowBar"><img src="https://raw.githubusercontent.com/debugged-me/debugged-me/output/app-meowbar.svg" width="32%" alt="MeowBar — macOS menu-bar monitor"/></a>
-  <a href="https://github.com/debugged-me/PaperTrail"><img src="https://raw.githubusercontent.com/debugged-me/debugged-me/output/app-papertrail.svg" width="32%" alt="PaperTrail — Receipt scanning"/></a>
-  <a href="https://github.com/debugged-me/Queueoke"><img src="https://raw.githubusercontent.com/debugged-me/debugged-me/output/app-queueoke.svg" width="32%" alt="Queueoke — Karaoke queue"/></a>
+  <a href="https://github.com/debugged-me/MeowBar"><picture><source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/debugged-me/debugged-me/output/app-meowbar-m.svg"><img src="https://raw.githubusercontent.com/debugged-me/debugged-me/output/app-meowbar.svg" width="32%" alt="MeowBar — macOS menu-bar monitor"></picture></a>
+  <a href="https://github.com/debugged-me/PaperTrail"><picture><source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/debugged-me/debugged-me/output/app-papertrail-m.svg"><img src="https://raw.githubusercontent.com/debugged-me/debugged-me/output/app-papertrail.svg" width="32%" alt="PaperTrail — Receipt scanning"></picture></a>
+  <a href="https://github.com/debugged-me/Queueoke"><picture><source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/debugged-me/debugged-me/output/app-queueoke-m.svg"><img src="https://raw.githubusercontent.com/debugged-me/debugged-me/output/app-queueoke.svg" width="32%" alt="Queueoke — Karaoke queue"></picture></a>
 </p>
 <!-- public-apps:end -->
 
@@ -41,7 +47,10 @@
 <br/>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/debugged-me/debugged-me/output/stats.svg" width="100%" alt="GitHub activity"/>
+  <picture>
+    <source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/debugged-me/debugged-me/output/stats-m.svg">
+    <img src="https://raw.githubusercontent.com/debugged-me/debugged-me/output/stats.svg" width="100%" alt="GitHub activity">
+  </picture>
 </p>
 
 <p align="center">
@@ -49,5 +58,8 @@
 </p>
 
 <p align="center">
-  <img src="assets/footer.svg" width="100%" alt="Fear with progress is better than comfort with none."/>
+  <picture>
+    <source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/debugged-me/debugged-me/main/assets/footer-m.svg">
+    <img src="assets/footer.svg" width="100%" alt="Fear with progress is better than comfort with none.">
+  </picture>
 </p>
