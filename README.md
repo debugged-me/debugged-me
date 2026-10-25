@@ -15,6 +15,7 @@
 <!-- public-apps:start -->
 <p align="center">
   <a href="https://github.com/debugged-me/MeowBar"><picture><source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/debugged-me/debugged-me/output/app-meowbar-m.svg"><img src="https://raw.githubusercontent.com/debugged-me/debugged-me/output/app-meowbar.svg" width="32%" alt="MeowBar — macOS menu-bar monitor"></picture></a>
+  <a href="https://github.com/debugged-me/Keybit"><picture><source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/debugged-me/debugged-me/output/app-keybit-m.svg"><img src="https://raw.githubusercontent.com/debugged-me/debugged-me/output/app-keybit.svg" width="32%" alt="Keybit — Privacy Password Manager"></picture></a>
   <a href="https://github.com/debugged-me/PaperTrail"><picture><source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/debugged-me/debugged-me/output/app-papertrail-m.svg"><img src="https://raw.githubusercontent.com/debugged-me/debugged-me/output/app-papertrail.svg" width="32%" alt="PaperTrail — Receipt scanning"></picture></a>
   <a href="https://github.com/debugged-me/Queueoke"><picture><source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/debugged-me/debugged-me/output/app-queueoke-m.svg"><img src="https://raw.githubusercontent.com/debugged-me/debugged-me/output/app-queueoke.svg" width="32%" alt="Queueoke — Karaoke queue"></picture></a>
 </p>
